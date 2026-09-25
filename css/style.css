@@ -1,0 +1,76 @@
+/* Área da história do café e da cafeteria */
+.historia-cafe {
+  width: min(1100px, calc(100% - 32px));
+  margin: 64px auto;
+  padding: 56px;
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 48px;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #4a2c20 0%, #183a31 100%);
+  color: #fff;
+  box-shadow: 0 20px 45px rgba(17, 13, 11, 0.18);
+}
+
+.historia-kicker {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: #d5b49f;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.historia-conteudo h1 {
+  margin: 0 0 22px;
+  font-family: Georgia, serif;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 0.98;
+}
+
+.historia-conteudo p {
+  margin: 0 0 16px;
+  color: rgba(255, 255, 255, 0.86);
+  line-height: 1.8;
+}
+
+.historia-conteudo p:last-child {
+  margin-bottom: 0;
+}
+
+.historia-detalhe {
+  min-height: 280px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.xícara {
+  font-size: 5rem;
+}
+
+.ano {
+  color: #d5b49f;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 700px) {
+  .historia-cafe {
+    grid-template-columns: 1fr;
+    padding: 32px 24px;
+    gap: 28px;
+  }
+
+  .historia-detalhe {
+    min-height: 180px;
+  }
+}
