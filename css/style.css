@@ -1,76 +1,121 @@
-/* Área da história do café e da cafeteria */
-.historia-cafe {
-  width: min(1100px, calc(100% - 32px));
-  margin: 64px auto;
-  padding: 56px;
-  display: grid;
-  grid-template-columns: 1.35fr 0.65fr;
-  gap: 48px;
-  align-items: center;
+
+/* Carrossel da página inicial */
+.carousel {
+  position: relative;
+  min-height: 560px;
   overflow: hidden;
-  border-radius: 28px;
-  background: linear-gradient(135deg, #4a2c20 0%, #183a31 100%);
   color: #fff;
-  box-shadow: 0 20px 45px rgba(17, 13, 11, 0.18);
 }
 
-.historia-kicker {
-  display: inline-block;
-  margin-bottom: 14px;
-  color: #d5b49f;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+.carousel-track,
+.carousel-slide {
+  min-height: 560px;
 }
 
-.historia-conteudo h1 {
-  margin: 0 0 22px;
-  font-family: Georgia, serif;
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  line-height: 0.98;
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+  background-position: center;
+  background-size: cover;
 }
 
-.historia-conteudo p {
-  margin: 0 0 16px;
-  color: rgba(255, 255, 255, 0.86);
-  line-height: 1.8;
+.carousel-slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(20, 13, 10, 0.82), rgba(20, 13, 10, 0.22));
 }
 
-.historia-conteudo p:last-child {
-  margin-bottom: 0;
+.carousel-slide.is-active {
+  opacity: 1;
+  visibility: visible;
 }
 
-.historia-detalhe {
-  min-height: 280px;
-  display: grid;
-  place-items: center;
-  align-content: center;
-  gap: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.08);
+.slide-one { background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1800&q=85'); }
+.slide-two { background-image: url('https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=1800&q=85'); }
+.slide-three { background-image: url('https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1800&q=85'); }
+
+.carousel-content {
+  position: relative;
+  z-index: 1;
+  width: min(650px, calc(100% - 32px));
+  margin: 0 auto;
+  margin-left: max(16px, calc((100% - var(--container)) / 2));
 }
 
-.xícara {
-  font-size: 5rem;
+.carousel-content h1 {
+  max-width: 650px;
+  margin: 0 0 18px;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: 0.93;
 }
 
-.ano {
-  color: #d5b49f;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.carousel-content p {
+  max-width: 500px;
+  margin: 0 0 28px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.08rem;
+  line-height: 1.7;
 }
 
-@media (max-width: 700px) {
-  .historia-cafe {
-    grid-template-columns: 1fr;
-    padding: 32px 24px;
-    gap: 28px;
-  }
+.carousel-content .eyebrow { color: #d5b49f; }
 
-  .historia-detalhe {
-    min-height: 180px;
-  }
+.carousel-control {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  cursor: pointer;
+  font-size: 2rem;
+  line-height: 1;
+  transform: translateY(-50%);
+  transition: background 0.2s ease;
+}
+
+.carousel-control:hover { background: rgba(0, 0, 0, 0.5); }
+.carousel-control.previous { left: 24px; }
+.carousel-control.next { right: 24px; }
+
+.carousel-dots {
+  position: absolute;
+  z-index: 2;
+  bottom: 28px;
+  left: 50%;
+  display: flex;
+  gap: 10px;
+  transform: translateX(-50%);
+}
+
+.carousel-dot {
+  width: 11px;
+  height: 11px;
+  padding: 0;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.carousel-dot.is-active { background: #fff; }
+
+@media (max-width: 640px) {
+  .carousel,
+  .carousel-track,
+  .carousel-slide { min-height: 620px; }
+  .carousel-control { top: auto; bottom: 22px; transform: none; }
+  .carousel-control.previous { left: 24px; }
+  .carousel-control.next { right: 24px; }
+  .carousel-dots { bottom: 40px; }
 }
